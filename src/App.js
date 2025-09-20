@@ -3,10 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-ro
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import AdminPanel from "./pages/AdminPanel";
+import API from "./api/api";
 
 export default function App() {
   const [auth, setAuth] = useState({ token: null, role: null, username: null });
+
+  const handleLogout = () => {
+    setAuth({ token: null, role: null, username: null });
+    API.defaults.headers.common["Authorization"] = undefined;
+  };
 
   return (
     <Router>
@@ -14,9 +19,21 @@ export default function App() {
         <header className="bg-white shadow p-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-purple-700">Sweet Shop</h1>
           <nav className="space-x-4">
-            <Link className="text-purple-600 hover:underline" to="/login">Login</Link>
-            <Link className="text-purple-600 hover:underline" to="/register">Register</Link>
+            {!auth.token && (
+              <>
+                <Link className="text-purple-600 hover:underline" to="/login">Login</Link>
+                <Link className="text-purple-600 hover:underline" to="/register">Register</Link>
+              </>
+            )}
             <Link className="text-purple-600 hover:underline" to="/dashboard">Dashboard</Link>
+            {auth.token && (
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
+              >
+                Logout
+              </button>
+            )}
           </nav>
         </header>
 
@@ -25,7 +42,6 @@ export default function App() {
             <Route path="/login" element={<Login setAuth={setAuth} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard auth={auth} />} />
-            <Route path="/admin" element={auth.role === "admin" ? <AdminPanel /> : <Navigate to="/login" />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Routes>
         </main>
