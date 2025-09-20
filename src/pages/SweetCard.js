@@ -1,32 +1,49 @@
-import { api } from '../services/api';
+import { useEffect, useState } from "react";
+import API from "../api/api";
+import AdminPanel from "./AdminPanel";
+import SweetCard from "./SweetCard";
 
-const SweetCard = ({ sweet, fetchSweets }) => {
-  const handlePurchase = async () => {
+export default function Dashboard({ auth }) {
+  const [sweets, setSweets] = useState([]);
+
+  const fetchSweets = async () => {
     try {
-      await api.post(`/sweets/${sweet._id}/purchase`);
-      fetchSweets();
-      alert('Purchased successfully!');
+      const res = await API.get("/sweets");
+      setSweets(res.data);
     } catch (err) {
-      alert(err.response?.data?.message || 'Error');
+      console.error(err.response?.data?.message || err.message);
     }
   };
 
+  const handlePurchase = async (sweetId) => {
+    if (!auth.token) {
+      alert("Please log in to purchase.");
+      return;
+    }
+    try {
+      await API.post(`/sweets/${sweetId}/purchase`, {}, {
+        headers: { Authorization: `Bearer ${auth.token}` }
+      });
+      fetchSweets();
+      alert("Purchase successful!");
+    } catch (err) {
+      alert(err.response?.data?.message || "Cannot purchase");
+    }
+  };
+
+  useEffect(() => { fetchSweets(); }, []);
+
   return (
-    <div className="card mb-3">
-      {sweet.image && (
-        <img src={`http://localhost:5000${sweet.image}`} className="card-img-top" alt={sweet.name} />
-      )}
-      <div className="card-body">
-        <h5 className="card-title">{sweet.name}</h5>
-        <p className="card-text">Price: ${sweet.price}</p>
-        <p className="card-text">Location: {sweet.location}</p>
-        <button className="btn btn-primary" onClick={handlePurchase} disabled={sweet.quantity <= 0}>
-          Purchase
-        </button>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-4">Available Sweets</h1>
+
+      {auth.role === "admin" && <AdminPanel fetchSweets={fetchSweets} sweets={sweets} />}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+        {sweets.map(s => (
+          <SweetCard key={s._id} sweet={s} fetchSweets={fetchSweets} auth={auth} handlePurchase={handlePurchase} />
+        ))}
       </div>
     </div>
   );
-};
-
-
-export default SweetCard;
+}
