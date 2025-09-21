@@ -1,7 +1,5 @@
 import { useState } from "react";
 import API from "../api/api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminPanel({ fetchSweets, sweets }) {
   const [form, setForm] = useState({
@@ -151,13 +149,13 @@ export default function AdminPanel({ fetchSweets, sweets }) {
                   onClick={() => handleEdit(s)}
                   className="bg-yellow-400 px-2 py-1 rounded hover:bg-yellow-500 flex items-center gap-1"
                 >
-                  <FontAwesomeIcon icon={faEdit} />
+                  <i className="fa fa-pen"></i>
                 </button>
                 <button
                   onClick={() => handleDelete(s._id)}
                   className="bg-red-500 px-2 py-1 text-white rounded hover:bg-red-600 flex items-center gap-1"
                 >
-                  <FontAwesomeIcon icon={faTrash} />
+                  <i className="fa fa-trash"></i>
                 </button>
                 <button
                   onClick={() => handleRestock(s._id)}
