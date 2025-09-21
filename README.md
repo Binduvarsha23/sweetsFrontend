@@ -40,50 +40,42 @@ Sweet Shop is designed to provide a smooth user experience for both customers an
 
 1. **Clone your backend repository**(assumed to exist):
    ```bash
-   git clone https://github.com/Binduvarsha23/sweets.git
+    git clone https://github.com/Binduvarsha23/sweets.git
    
 2. **Install dependencies:**
-```bash
-npm install
+   npm install
 
 
-3. **Create a .env file with required variables:**
-```bash
-MONGO_URI=<your_mongodb_connection_string>
-JWT_SECRET=<your_jwt_secret>
-PORT=5000
+4. **Create a .env file with required variables:**
+   MONGO_URI=<your_mongodb_connection_string>
+   JWT_SECRET=<your_jwt_secret>
+   PORT=5000
 
 
 4 **Run the backend server:**
-```bash
-npm run dev
+  npm run dev
 
 
-##The backend runs on http://localhost:5000.
+## The backend runs on http://localhost:5000.
 
 🔹 Frontend Setup
 
 1 **Clone the frontend repository:**
-```bash
-git clone https://github.com/Binduvarsha23/sweetsFrontend.git
-cd sweetsFrontend
+   git clone https://github.com/Binduvarsha23/sweetsFrontend.git
 
 
-2. Install dependencies:
-```bash
-npm install
+2. **Install dependencies:**
+   npm install
 
 
-3. Ensure the backend API URL is correct in src/api/api.js:
+4. **Ensure the backend API URL is correct in src/api/api.js:**
+   const API = axios.create({
+   baseURL: "http://localhost:5000/api",
+   });
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api",
-});
 
-
-4. Start the frontend:
-
-npm start
+4. **Start the frontend:**
+   npm start
 
 
 Open your browser at http://localhost:3000.
