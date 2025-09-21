@@ -104,13 +104,13 @@ Endpoint	Method	Role	Description
 ## 📸 Screenshots
 
 - **Login Page:** Login form for users and admins.  
-  ![Login Page](./screenshots/availablelist.png)  
+  ![Login Page](availablelist.png)  
 
 - **Dashboard:** Browse sweets with search filters and purchase functionality.  
-  ![Dashboard](./screenshots/purchase.png)  
+  ![Dashboard](purchase.png)  
 
 - **Admin Panel:** Add, edit, delete, and restock sweets using the form.  
-  ![Admin Panel](./screenshots/sweetform.png)  
+  ![Admin Panel](sweetform.png)  
 
 
 
