@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://craftsperson.onrender.com/api",
 });
 
 export const setAuthToken = (token) => {
@@ -13,3 +13,4 @@ export const setAuthToken = (token) => {
 };
 
 export default API;
+
