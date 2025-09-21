@@ -38,50 +38,50 @@ Sweet Shop is designed to provide a smooth user experience for both customers an
 
 ### 🔹 Backend Setup
 
-1. Clone your backend repository (assumed to exist):
+1. **Clone your backend repository**(assumed to exist):
    ```bash
    git clone https://github.com/Binduvarsha23/sweets.git
    
-Install dependencies:
-
+2. **Install dependencies:**
+```bash
 npm install
 
 
-Create a .env file with required variables:
-
+3. **Create a .env file with required variables:**
+```bash
 MONGO_URI=<your_mongodb_connection_string>
 JWT_SECRET=<your_jwt_secret>
 PORT=5000
 
 
-Run the backend server:
-
+4 **Run the backend server:**
+```bash
 npm run dev
 
 
-The backend runs on http://localhost:5000.
+##The backend runs on http://localhost:5000.
 
 🔹 Frontend Setup
 
-Clone the frontend repository:
-
+1 **Clone the frontend repository:**
+```bash
 git clone https://github.com/Binduvarsha23/sweetsFrontend.git
 cd sweetsFrontend
 
 
-Install dependencies:
-
+2. Install dependencies:
+```bash
 npm install
 
 
-Ensure the backend API URL is correct in src/api/api.js:
+3. Ensure the backend API URL is correct in src/api/api.js:
 
 const API = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
 
-Start the frontend:
+4. Start the frontend:
 
 npm start
 
@@ -118,31 +118,23 @@ Open your browser at http://localhost:3000.
 
 
 
-🤖 My AI Usage
-AI Tools Used
+## 🤖 My AI Usage
 
-ChatGPT (OpenAI): For generating and refining React components, debugging, and brainstorming UI logic.
+### AI Tools Used
+**ChatGPT (OpenAI):** Used for generating and refining React components, debugging, and brainstorming UI logic.
 
+### How AI Was Used
+- Structured `Dashboard.js` and `AdminPanel.js` components, especially implementing search filter logic and admin CRUD operations.
+- Debugged purchase and restock logic.
+- Suggested optimizations for state management and component reusability.
 
-How AI Was Used
-
-ChatGPT: Helped structure Dashboard.js and AdminPanel.js components, especially search filter logic and admin CRUD operations. Debugged purchase and restock logic.
-
-
-Reflection
-
-AI tools significantly sped up development:
-
-Quick starting points for complex logic.
-
-Reduced boilerplate and repetitive coding.
-
-Helped avoid common bugs, but required careful manual adjustments to match backend responses.
+### Reflection
+AI tools significantly sped up development by:
+- Providing quick starting points for complex logic.
+- Reducing boilerplate and repetitive coding.
+- Helping avoid common bugs, though manual adjustments were required to match backend responses.
 
 AI acted as a collaborative partner, not a replacement for critical thinking.
 
-
-
-🏆 Conclusion
-
-Sweet Shop is a user-friendly, role-based, and responsive application for managing sweets inventory. Users can explore and purchase sweets, while admins have full control over the inventory.
+### 🏆 Conclusion
+**Sweet Shop** is a user-friendly, role-based, and responsive application for managing sweets inventory. Users can explore and purchase sweets, while admins have full control over the inventory.
