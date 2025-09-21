@@ -88,17 +88,20 @@ npm start
 
 Open your browser at http://localhost:3000.
 
-🔗 Backend API Endpoints
-Endpoint	Method	Role	Description
-/auth/register	POST	Public	Register user/admin
-/auth/login	POST	Public	Log in, return token, role, username
-/sweets	GET	Public	Get all sweets
-/sweets/search	GET	Public	Search sweets (name, category, price)
-/sweets	POST	Admin	Add new sweet
-/sweets/:id	PUT	Admin	Update sweet
-/sweets/:id	DELETE	Admin	Delete sweet
-/sweets/:id/purchase	POST	User	Purchase sweet (decrease stock)
-/sweets/:id/restock	POST	Admin	Restock sweet (increase stock)
+## 🔗 Backend API Endpoints
+
+| Endpoint                 | Method | Role   | Description                          |
+|---------------------------|--------|--------|--------------------------------------|
+| `/auth/register`          | POST   | Public | Register a user or admin             |
+| `/auth/login`             | POST   | Public | Log in and return token, role, username |
+| `/sweets`                 | GET    | Public | Get all sweets                        |
+| `/sweets/search`          | GET    | Public | Search sweets by name, category, or price |
+| `/sweets`                 | POST   | Admin  | Add a new sweet                        |
+| `/sweets/:id`             | PUT    | Admin  | Update an existing sweet              |
+| `/sweets/:id`             | DELETE | Admin  | Delete a sweet                         |
+| `/sweets/:id/purchase`    | POST   | User   | Purchase a sweet (decrease stock)     |
+| `/sweets/:id/restock`     | POST   | Admin  | Restock a sweet (increase stock)      |
+
 
 
 ## 📸 Screenshots
